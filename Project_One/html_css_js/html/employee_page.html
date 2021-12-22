@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="../css/employee_page.css">
 </head>
 <body>
-    <h1 style="text-align: center; color: greenyellow;">My Employee Information Page</h1>
+    <h1 style="text-align: center; color: greenyellow; font-size: 50px;">My Employee Information Page</h1>
 
+    <h2> Employee Information</h2>
     <table id="employeeTable">
         <thead id="employeeHead">
             <tr>
@@ -22,13 +23,60 @@
                 <th>
                     Last Name
                 </th>
+                <th>
+                    Username
+                </th>
             </tr>
         </thead>
         <!-- Add dynamic event here... -->
         <tbody id="employeeBody">
+            <tr>
+
+            </tr>
                 <!-- Content will be added dynamically -->
         </tbody>
     </table>
+    <br>
+        <h2> Reimbursement Information </h2>
+    <table>
+        <tbody id="reimbursementBody">
+            <tr>
+                <th>Employee ID</th>
+                <th>Manager ID</th>
+                <th>Reimbursement</th>
+                <th>Reason</th>
+                <th>Approval</th>
+                <th>ManagerComment</th>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+        <h3>Create a New Reimbursement Request</h3>
+    <div id="createRequestForm" class="container">
+        <label for="employeeIdInput"><b>Employee Id</b></label>
+        <input type="text" placeholder="Enter Your Id" id="employeeIdInput" required>
+        <br>
+        <label for="managerIdInput"><b>Manager Id</b></label>
+        <input type="text" placeholder="Manager Id" id="managerIdInput">
+        <br>
+        <label for="requestReimbursementInput"><b>Reimbursement Requested</b></label>
+        <input type="text" placeholder="Enter Reimbursement Amount" id="requestReimbursementInput">
+        <br>
+        <label for="reason"><b>Reason</b></label>
+        <input type="text" placeholder="Enter Your Reason" id="reason">
+        <br>
+        <label for="approval"><b>Approval</b></label>
+        <input type="text" placeholder="Enter Your Decision" id="approval" disabled>
+        <br>
+        <label for="managerComment"><b>Manager Comment</b></label>
+        <input type="text" placeholder="Manager Comment" id="managerComment" disabled>
+        <br>
+        <button onclick="employeeCreateReimbursement()">Submit Reimbursement</button>
+    </div>
+    
+    <div id="logoutLblPos">
+    <button onclick="logout()">Logout</button>
+    </div>
 <script src="../js/employee_page.js"></script>
 </body>
 </html>

@@ -5,8 +5,11 @@ from typing import List
 
 class EmployeeDAO(ABC):
 
+    # @abstractmethod
+    # def get_employee_information(self, employee_id) -> Employee:
+    #     pass
     @abstractmethod
-    def get_employee_information(self, employee_id) -> Employee:
+    def get_employee_by_username(self, username) -> Employee:
         pass
 
     @abstractmethod

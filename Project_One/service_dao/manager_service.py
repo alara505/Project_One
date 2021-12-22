@@ -4,8 +4,12 @@ from Project_One.entities.manager import Manager
 
 class ManagerServiceDAO(ABC):
 
+    # @abstractmethod
+    # def service_get_manager_information(self, manager_id) -> Manager:
+    #     pass
+
     @abstractmethod
-    def service_get_manager_information(self, manager_id) -> Manager:
+    def service_get_manager_by_username(self, username: str) -> Manager:
         pass
 
     @abstractmethod

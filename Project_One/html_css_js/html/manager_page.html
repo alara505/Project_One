@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="../css/employee_page.css">
 </head>
 <body>
-    <h1 style="text-align: center; color: greenyellow;">All Employee Information Page</h1>
+    <h1 style="text-align: center; color: greenyellow;  font-size: 50px;" >All Manager Information Page</h1>
 
-    <table id="employeeTable">
-        <thead id="employeeHead">
+    <h2> Manager Information</h2>
+    <table id="managerTable">
+        <thead id="managerHead">
             <tr>
                 <th>
-                    Employee ID
+                    Manager ID
                 </th>
                 <th>
                     First Name
@@ -22,13 +23,73 @@
                 <th>
                     Last Name
                 </th>
+                <th>
+                    Username
+                </th>
             </tr>
         </thead>
         <!-- Add dynamic event here... -->
-        <tbody id="employeeBody">
+        <tbody id="managerBody">
+            <tr>
+
+            </tr>
                 <!-- Content will be added dynamically -->
         </tbody>
     </table>
-<script src="../js/employee_page.js"></script>
+    <br>
+        <h2> Past Reimbursement Information </h2>
+    <table>
+        <tbody id="reimbursementBody">
+            <tr>
+                <th>Employee ID</th>
+                <th>Manager ID</th>
+                <th>Reimbursement</th>
+                <th>Reason</th>
+                <th>Approval</th>
+                <th>ManagerComment</th>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <h2> Pending Reimbursement Information</h2>
+    <table>
+        <tbody id="reimbursementPendingBody">
+            <tr>
+                <th>Reimbursement ID</th>
+                <th>Employee ID</th>
+                <th>Reimbursement</th>
+                <th>Reason</th>
+                <th>Approval</th>
+                <th>ManagerComment</th>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+        <h3> Approve or Deny The Reimbursement Requests </h3>
+    <div id="createRequestForm" class="container">
+        <label for="ReimbursementIdInput"><b>Reimbursement Id</b></label>
+        <input type="text" placeholder="Enter Your Reimbursement Id" id="reimbursementIdInput" required>
+        <br>
+        <label for="employeeIdInput"><b>Employee Id</b></label>
+        <input type="text" placeholder="Enter Your Employee Id" id="employeeIdInput">
+        <br>
+        <label for="requestReimbursementInput"><b>Reimbursement Requested</b></label>
+        <input type="text" placeholder="Enter Reimbursement Amount" id="requestReimbursementInput" disabled>
+        <br>
+        <label for="reason"><b>Reason</b></label>
+        <input type="text" placeholder="Enter Your Reason" id="reason" disabled>
+        <br>
+        <label for="approval"><b>Approval</b></label>
+        <input type="text" placeholder="Enter Your Decision" id="approval">
+        <br>
+        <label for="managerComment"><b>Manager Comment</b></label>
+        <input type="text" placeholder="Manager Comment" id="managerComment">
+        <br>
+        <button onclick="updateApproveReimbursementInfo()">Approve</button>
+        <br>
+        
+
+    </div>
+<script src="../js/manager_page.js"></script>
 </body>
 </html>

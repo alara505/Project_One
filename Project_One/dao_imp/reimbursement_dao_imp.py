@@ -51,23 +51,19 @@ class ReimbursementDAOImp(ReimbursementDAO):
             reimbursement_list.append(Reimbursement(*reimbursement))
         return reimbursement_list
 
-    # This method for more robust, but it's to grab all the approval requests from the managers
-    def get_all_reimbursements_by_approval(self, approval: str) -> list[Reimbursement]:
-        pass
-
     # this method is for the manager to approve their request.
     def approve_reimbursement(self, reimbursement: Reimbursement) -> Reimbursement:
-        sql = 'update "Project_one".reimbursement set approval = %s where reimbursement_id = %s'
+        sql = 'update "Project_one".reimbursement set approval = %s, manager_comment = %s where reimbursement_id = %s'
         cursor = connection.cursor()
-        cursor.execute(sql, [reimbursement.approval, reimbursement.reimbursement_id])
+        cursor.execute(sql, [reimbursement.approval, reimbursement.manager_comment, reimbursement.reimbursement_id])
         connection.commit()
         return reimbursement
 
     # This method is for the manager to deny their request.
     def deny_reimbursement(self, reimbursement: Reimbursement) -> Reimbursement:
-        sql = 'update "Project_one".reimbursement set approval = %s where reimbursement_id = %s'
+        sql = 'update "Project_one".reimbursement set approval = %s, manager_comment = %s where reimbursement_id = %s'
         cursor = connection.cursor()
-        cursor.execute(sql, [reimbursement.approval, reimbursement.reimbursement_id])
+        cursor.execute(sql, [reimbursement.approval, reimbursement.manager_comment, reimbursement.reimbursement_id])
         connection.commit()
         return reimbursement
 
@@ -81,19 +77,34 @@ class ReimbursementDAOImp(ReimbursementDAO):
         connection.commit()
         return reimbursement
 
-    # # This is just random method, but it's to select the manager comment, so the employee can check which manager gave that reason. This is for more robust method...
-    # def select_comment_reimbursement_manager_comment(self, reimbursement: Reimbursement) -> Reimbursement:
-    #     sql = 'select manager_comment = %s from "Project_one".reimbursement where manager_id = %s'
+    # This method is to have the manager update the table to change/revoke their comment/reason
+    # def update_comment_reimbursement_manager_comment(self, reimbursement: Reimbursement) -> Reimbursement:
+    #     sql = 'update "Project_one".reimbursement set manager_comment = %s where manager_id = %s and reimbursement_id = %s'
     #     cursor = connection.cursor()
-    #     cursor.execute(sql, [reimbursement.manager_comment, reimbursement.manager_id])
-    #     reimbursement_record = cursor.fetchone()[0]
-    #     reimbursement = Reimbursement(*reimbursement_record)
+    #     cursor.execute(sql, [reimbursement.manager_comment, reimbursement.manager_id, reimbursement.reimbursement_id])
+    #     connection.commit()
     #     return reimbursement
 
-    # This method is to have the manager update the table to change/revoke their comment/reason
-    def update_comment_reimbursement_manager_comment(self, reimbursement: Reimbursement) -> Reimbursement:
-        sql = 'update "Project_one".reimbursement set manager_comment = %s where manager_id = %s and reimbursement_id = %s'
+    def get_all_pending_reimbursements_by_manager_id(self, manager_id: int) -> list[Reimbursement]:
+        sql = """select * from "Project_one".reimbursement where manager_id = %s and approval = 'Pending'"""
         cursor = connection.cursor()
-        cursor.execute(sql, [reimbursement.manager_comment, reimbursement.manager_id, reimbursement.reimbursement_id])
-        connection.commit()
-        return reimbursement
+        cursor.execute(sql, [manager_id])
+        pending_reimbursement_records = cursor.fetchall()
+        pending_reimbursement_list = []
+        for pending_reimbursement in pending_reimbursement_records:
+            pending_reimbursement_list.append(Reimbursement(*pending_reimbursement))
+        return pending_reimbursement_list
+
+    # Having an issue here in this method it doesn't read towards sql..
+    def get_past_reimbursements_by_manager_id(self, manager_id: int) -> list[Reimbursement]:
+        sql = """select * from "Project_one".reimbursement where manager_id = %s and approval <> 'Pending'"""
+        cursor = connection.cursor()
+        cursor.execute(sql, [manager_id])
+        past_reimbursements_records = cursor.fetchall()
+        past_reimbursements_list = []
+        for past_reimbursement in past_reimbursements_records:
+            past_reimbursements_list.append(Reimbursement(*past_reimbursement))
+        return past_reimbursements_list
+
+    def view_reimbursements_statistics(self, reimbursement: Reimbursement):
+        pass

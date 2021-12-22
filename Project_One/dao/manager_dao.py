@@ -5,8 +5,12 @@ from typing import List
 
 class ManagerDAO(ABC):
 
+    # @abstractmethod
+    # def get_manager_information(self, manager_id) -> Manager:
+    #     pass
+
     @abstractmethod
-    def get_manager_information(self, manager_id) -> Manager:
+    def get_manager_by_username(self, username) -> Manager:
         pass
 
     @abstractmethod

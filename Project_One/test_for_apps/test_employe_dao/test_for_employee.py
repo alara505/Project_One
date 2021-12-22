@@ -8,9 +8,13 @@ employee_two: Employee = Employee(2, "David", "Zazulak", "David101", "Runescape"
 update_employee: Employee = Employee(4, "Eric", "Strange", "eric101", "strange")
 
 
-def test_get_employee_by_id():
-    show = employee_dao.get_employee_information(1)
-    assert show.employee_id == 1
+# def test_get_employee_by_id():
+#     show = employee_dao.get_employee_information(1)
+#     assert show.employee_id == 1
+
+def test_get_employee_by_email():
+    returned_employee: Employee = employee_dao.get_employee_by_username("eric101")
+    assert returned_employee.employee_id == 4
 
 
 def test_get_all_employee():

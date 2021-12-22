@@ -8,10 +8,20 @@ from Project_One.custom_exceptions.incorrect_login import LoginFailed
 
 class EmployeeDAOImp(EmployeeDAO):
 
-    def get_employee_information(self, employee_id) -> Employee:
-        sql = 'select * from "Project_one".employee where employee_id = %s'
+
+    # add username instead...
+    # def get_employee_information(self, employee_id) -> Employee:
+    #     sql = 'select * from "Project_one".employee where employee_id = %s'
+    #     cursor = connection.cursor()
+    #     cursor.execute(sql, [employee_id])
+    #     employee_record = cursor.fetchone()
+    #     employee = Employee(*employee_record)
+    #     return employee
+
+    def get_employee_by_username(self, username) -> Employee:
+        sql = 'select * from "Project_one".employee where username = %s'
         cursor = connection.cursor()
-        cursor.execute(sql, [employee_id])
+        cursor.execute(sql, [username])
         employee_record = cursor.fetchone()
         employee = Employee(*employee_record)
         return employee

@@ -49,8 +49,3 @@ def test_update_reimbursement_success():
 # def test_comment_reimbursement_manager_comment():
 #     manager_comment = reimbursement_dao.select_comment_reimbursement_manager_comment(comment_reimbursement)
 #     assert manager_comment
-
-
-def test_update_comment_reimbursement_manager_comment():
-    manager_comment = reimbursement_dao.update_comment_reimbursement_manager_comment(employee_reimbursement)
-    assert manager_comment

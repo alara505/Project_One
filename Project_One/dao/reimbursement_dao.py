@@ -21,23 +21,36 @@ class ReimbursementDAO(ABC):
     def select_reimbursement_by_employee_id(self, employee_id) -> list[Reimbursement]:
         pass
 
-    @abstractmethod
-    def approve_reimbursement(self, employee_id) -> Reimbursement:
-        pass
-
-    @abstractmethod
-    def deny_reimbursement(self, employee_id) -> Reimbursement:
-        pass
-
     # @abstractmethod
-    # def select_comment_reimbursement_manager_comment(self, manager_id) -> Reimbursement:
+    # def get_all_reimbursements_by_approval(self, approval: str) -> list[Reimbursement]:
     #     pass
+
+    @abstractmethod
+    def approve_reimbursement(self, reimbursement: Reimbursement) -> Reimbursement:
+        pass
+
+    @abstractmethod
+    def deny_reimbursement(self, reimbursement: Reimbursement) -> Reimbursement:
+        pass
 
     @abstractmethod
     def update_reimbursement(self, reimbursement: Reimbursement) -> Reimbursement:
         pass
 
-    def update_comment_reimbursement_manager_comment(self, reimbursement: Reimbursement) -> Reimbursement:
+    # @abstractmethod
+    # def update_comment_reimbursement_manager_comment(self, reimbursement: Reimbursement) -> Reimbursement:
+    #     pass
+
+    @abstractmethod
+    def get_all_pending_reimbursements_by_manager_id(self, manager_id: int) -> list[Reimbursement]:
+        pass
+
+    @abstractmethod
+    def get_past_reimbursements_by_manager_id(self, manager_id: int) -> list[Reimbursement]:
+        pass
+
+    @abstractmethod
+    def view_reimbursements_statistics(self, reimbursement: Reimbursement):
         pass
 
 

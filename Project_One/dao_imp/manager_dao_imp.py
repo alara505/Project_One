@@ -8,10 +8,18 @@ from Project_One.custom_exceptions.incorrect_login import LoginFailed
 
 class ManagerDAOImp(ManagerDAO):
 
-    def get_manager_information(self, manager_id) -> Manager:
-        sql = 'select * from "Project_one".manager where manager_id = %s'
+    # def get_manager_information(self, manager_id) -> Manager:
+    #     sql = 'select * from "Project_one".manager where manager_id = %s'
+    #     cursor = connection.cursor()
+    #     cursor.execute(sql, [manager_id])
+    #     manager_record = cursor.fetchone()
+    #     manager = Manager(*manager_record)
+    #     return manager
+
+    def get_manager_by_username(self, username) -> Manager:
+        sql = 'select * from "Project_one".manager where username = %s'
         cursor = connection.cursor()
-        cursor.execute(sql, [manager_id])
+        cursor.execute(sql, [username])
         manager_record = cursor.fetchone()
         manager = Manager(*manager_record)
         return manager

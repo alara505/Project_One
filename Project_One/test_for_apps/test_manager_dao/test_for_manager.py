@@ -6,11 +6,6 @@ manager_dao = ManagerDAOImp()
 update_manager = Manager(3, 'Lupe', 'Lara', 'lupe505', 'lupe7070')
 
 
-def test_get_manager_by_id():
-    show = manager_dao.get_manager_information(1)
-    assert show.manager_id == 1
-
-
 def test_get_all_employee():
     elist = manager_dao.get_all_manager_information()
     return elist

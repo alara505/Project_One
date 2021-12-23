@@ -48,6 +48,22 @@ class ReimbursementServiceDAO(ABC):
     def service_get_past_reimbursements_by_manager_id(self, manager_id: int) -> list[Reimbursement]:
         pass
 
+    # @abstractmethod
+    # def get_average_reimbursement_lay(self):
+    #     pass
+
     @abstractmethod
-    def service_view_reimbursements_statistics(self, reimbursement: Reimbursement):
+    def get_number_of_reimbursement_requests_total(self):
+        pass
+
+    @abstractmethod
+    def get_number_of_reimbursement_requests_pending(self):
+        pass
+
+    @abstractmethod
+    def get_number_of_reimbursement_requests_approved(self):
+        pass
+
+    @abstractmethod
+    def get_number_of_reimbursement_requests_denied(self):
         pass

@@ -43,6 +43,7 @@ class ReimbursementServiceImp(ReimbursementServiceDAO):
                 return self.reimbursement_dao.select_reimbursement_by_employee_id(employee_id)
         raise EmployeeIdDoesNotExistException("Employee Id does not exist")
 
+    #create booleans for manager id = false, and employee id = false..
     def service_approve_reimbursement(self, reimbursement: Reimbursement) -> Reimbursement:
         reimbursement_list = self.reimbursement_dao.select_get_all_reimbursement_information()
         for existing_reimbursement in reimbursement_list:
@@ -101,3 +102,39 @@ class ReimbursementServiceImp(ReimbursementServiceDAO):
     def service_update_reimbursement(self, reimbursement: Reimbursement) -> Reimbursement:
         result = self.reimbursement_dao.update_reimbursement(reimbursement)
         return result
+
+    # def get_average_reimbursement_lay(self):
+    #     requests = self.reimbursement_dao.select_get_all_reimbursement_information()
+    #     payouts = []
+    #     for results in requests:
+    #         if results.approval == 1:
+    #             payouts.append(results.reimbursement)
+    #     return max(payouts)
+
+    def get_number_of_reimbursement_requests_total(self):
+        requests = self.reimbursement_dao.select_get_all_reimbursement_information()
+        return len(requests)
+
+    def get_number_of_reimbursement_requests_pending(self):
+        requests = self.reimbursement_dao.select_get_all_reimbursement_information()
+        pending = []
+        for p in requests:
+            if p.approval == "Pending":
+                pending.append(p)
+        return len(pending)
+
+    def get_number_of_reimbursement_requests_approved(self):
+        requests = self.reimbursement_dao.select_get_all_reimbursement_information()
+        approved = []
+        for a in requests:
+            if a.approval == "Approve":
+                approved.append(a)
+        return len(approved)
+
+    def get_number_of_reimbursement_requests_denied(self):
+        requests = self.reimbursement_dao.select_get_all_reimbursement_information()
+        denied = []
+        for d in requests:
+            if d.approval == "Denied":
+                denied.append(d)
+        return len(denied)

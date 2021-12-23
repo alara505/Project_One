@@ -37,11 +37,21 @@
         </tbody>
     </table>
     <br>
+        <h2>Employee Requests Statistics </h2>
+        <h5>Total of Reimbursement Requests</h5>
+        <p id="reimbursementRequestsTotal"></p>
+        <h5>All Pending Reimbursement Requests<h5>
+        <p id="reimbursementRequestsPending"></p>
+        <h5>All Approved Reimbursement Requests</h5>
+        <p id="reimbursementRequestsApproved"></p>
+        <h5>All Denied Reimbursement Requests</h5>
+        <p id="reimbursementRequestsDenied"></p>
+
         <h2> Past Reimbursement Information </h2>
     <table>
         <tbody id="reimbursementBody">
             <tr>
-                <th>Employee ID</th>
+                <th>Reimbursement ID</th>
                 <th>Manager ID</th>
                 <th>Reimbursement</th>
                 <th>Reason</th>
@@ -56,7 +66,8 @@
         <tbody id="reimbursementPendingBody">
             <tr>
                 <th>Reimbursement ID</th>
-                <th>Employee ID</th>
+                <!-- <th>Employee ID</th> -->
+                <th>Manager ID</th>
                 <th>Reimbursement</th>
                 <th>Reason</th>
                 <th>Approval</th>
@@ -68,16 +79,19 @@
         <h3> Approve or Deny The Reimbursement Requests </h3>
     <div id="createRequestForm" class="container">
         <label for="ReimbursementIdInput"><b>Reimbursement Id</b></label>
-        <input type="text" placeholder="Enter Your Reimbursement Id" id="reimbursementIdInput" required>
+        <input type="text" placeholder="Enter Your Reimbursement Id" id="ReimbursementIdInput" required>
         <br>
         <label for="employeeIdInput"><b>Employee Id</b></label>
         <input type="text" placeholder="Enter Your Employee Id" id="employeeIdInput">
         <br>
+        <label for="managerIdInput"><b>Manager Id</b></label>
+        <input type="text" placeholder="Enter Your Manager Id" id="managerIdInput">
+        <br>
         <label for="requestReimbursementInput"><b>Reimbursement Requested</b></label>
-        <input type="text" placeholder="Enter Reimbursement Amount" id="requestReimbursementInput" disabled>
+        <input type="text" placeholder="Enter Reimbursement Amount" id="requestReimbursementInput">
         <br>
         <label for="reason"><b>Reason</b></label>
-        <input type="text" placeholder="Enter Your Reason" id="reason" disabled>
+        <input type="text" placeholder="Enter Your Reason" id="reason">
         <br>
         <label for="approval"><b>Approval</b></label>
         <input type="text" placeholder="Enter Your Decision" id="approval">
@@ -85,10 +99,11 @@
         <label for="managerComment"><b>Manager Comment</b></label>
         <input type="text" placeholder="Manager Comment" id="managerComment">
         <br>
-        <button onclick="updateApproveReimbursementInfo()">Approve</button>
+        <button id="Approvebutton" onclick="updateApproveReimbursementInfo()">Approve</button>
+        <button id="Denybutton" onclick="updateDenyReimbursementInfo()">Deny</button>
         <br>
-        
-
+        <button id="logoutbutton" onclick="logout()">Logout</button>
+    
     </div>
 <script src="../js/manager_page.js"></script>
 </body>

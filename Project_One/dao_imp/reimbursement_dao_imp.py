@@ -106,5 +106,3 @@ class ReimbursementDAOImp(ReimbursementDAO):
             past_reimbursements_list.append(Reimbursement(*past_reimbursement))
         return past_reimbursements_list
 
-    def view_reimbursements_statistics(self, reimbursement: Reimbursement):
-        pass

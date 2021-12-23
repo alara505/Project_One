@@ -84,6 +84,7 @@ def test_deny_reimbursement_fail_by_employee_id():
     except EmployeeIdDoesNotExistException as e:
         assert str(e) == "Employee ID was not found"
 
+
 # Error
 # def test_approve_reimbursement_comment_fail_by_too_many_char():
 #     try:
@@ -135,3 +136,25 @@ def test_reimbursement_non_numeric_fail():
         assert False
     except MustBeANumericValue as e:
         assert str(e) == "Reimbursement must be an integer."
+
+
+def test_get_number_of_reimbursement_requests_total():
+    result = reimbursement_service.get_number_of_reimbursement_requests_total()
+    assert result == 27
+
+
+def test_get_number_of_reimbursement_requests_pending():
+    result = reimbursement_service.get_number_of_reimbursement_requests_pending()
+    assert result == 23
+
+
+def test_get_number_of_reimbursement_requests_approved():
+    result = reimbursement_service.get_number_of_reimbursement_requests_approved()
+    assert result == 1
+
+
+def test_get_number_of_reimbursement_requests_denied():
+    # reimbursement5 = Reimbursement(0, 1, 4, 1000, "", "Denied", "")
+    # reimbursement_service.service_create_get_reimbursement(reimbursement5)
+    result = reimbursement_service.get_number_of_reimbursement_requests_denied()
+    assert result == 2

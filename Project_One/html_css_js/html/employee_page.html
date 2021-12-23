@@ -41,7 +41,7 @@
     <table>
         <tbody id="reimbursementBody">
             <tr>
-                <th>Employee ID</th>
+                <th>Reimbursement ID</th>
                 <th>Manager ID</th>
                 <th>Reimbursement</th>
                 <th>Reason</th>
@@ -71,11 +71,11 @@
         <label for="managerComment"><b>Manager Comment</b></label>
         <input type="text" placeholder="Manager Comment" id="managerComment" disabled>
         <br>
-        <button onclick="employeeCreateReimbursement()">Submit Reimbursement</button>
+        <button id="Submitbutton" onclick="employeeCreateReimbursement()">Submit Reimbursement</button>
     </div>
     
     <div id="logoutLblPos">
-    <button onclick="logout()">Logout</button>
+    <button  id="logoutbutton" onclick="logout()">Logout</button>
     </div>
 <script src="../js/employee_page.js"></script>
 </body>

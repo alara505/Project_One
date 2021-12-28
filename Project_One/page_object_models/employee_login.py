@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 
-class LoginPage:
+class EmployeeLogin:
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
@@ -15,7 +15,6 @@ class LoginPage:
         element: WebElement = self.driver.find_element(By.ID, "password")
         return element
 
-    # Review this one a bit more
     def select_click_login(self):
         element: WebElement = self.driver.find_element(By.ID, "button")
         return element

@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
 
-class Managerpage:
+class ApproveReimbursement:
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
@@ -37,12 +37,4 @@ class Managerpage:
 
     def select_approve_button(self):
         element: WebElement = self.driver.find_element(By.ID, "Approvebutton")
-        return element
-
-    def select_denied_button(self):
-        element: WebElement = self.driver.find_element(By.ID, "Denybutton")
-        return element
-
-    def select_logout_button(self):
-        element: WebElement = self.driver.find_element(By.ID, "logoutbutton")
         return element
